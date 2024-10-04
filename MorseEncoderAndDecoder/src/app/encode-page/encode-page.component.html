@@ -1,1 +1,10 @@
-<p>encode-page works!</p>
+<form action="javascript:void(0)" (submit)="onSubmit()">
+  <label>
+    <h1>Enter string to encode.</h1>
+    <input type="text" name="str" [(ngModel)]="inputValue">
+  </label>
+  <button>OK</button>
+</form>
+
+<p>{{output()}}</p>
+<p class="error-message">{{errorMessage()}}</p>
