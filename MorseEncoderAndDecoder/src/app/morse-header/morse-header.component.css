@@ -1,0 +1,27 @@
+nav {
+  background: lightblue;
+  min-height: 80px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  ul {
+    width: calc(100% * 3 / 4);
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+
+    li a {
+      font-size: 120%;
+      text-decoration: none;
+      color: #015c5c;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+        text-underline: #015c5c;
+      }
+    }
+  }
+}

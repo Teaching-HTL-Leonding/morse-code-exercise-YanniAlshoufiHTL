@@ -1,10 +1,12 @@
-<form action="javascript:void(0)" (submit)="onSubmit()">
-  <label>
-    <h1>Enter string to encode.</h1>
-    <input type="text" name="str" [(ngModel)]="inputValue">
-  </label>
-  <button [disabled]="isButtonDisabled()">OK</button>
-</form>
+<main>
+  <form action="javascript:void(0)" (submit)="onSubmit()">
+    <label>
+      <h1>Enter string to encode.</h1>
+      <input type="text" name="str" [(ngModel)]="inputValue">
+    </label>
+    <button [disabled]="isButtonDisabled()">OK</button>
+  </form>
 
-<input readonly [value]="output()" [hidden]="errorMessage().length !== 0">
-<input class="error-message" value="{{ errorMessage() }}" [hidden]="errorMessage().length === 0">
+  <input readonly [value]="output()" [hidden]="errorMessage().length !== 0">
+  <input class="error-message" value="{{ errorMessage() }}" [hidden]="errorMessage().length === 0">
+</main>
