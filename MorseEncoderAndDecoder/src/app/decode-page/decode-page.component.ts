@@ -1,6 +1,7 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, effect, inject, signal } from '@angular/core';
 import { MorseService } from "../morse.service";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { concatWith } from "rxjs";
 
 @Component({
   selector: 'app-decode-page',
@@ -17,6 +18,16 @@ export class DecodePageComponent {
   protected inputValue = signal<string>("");
   protected output = signal<string>("");
   protected errorMessage = signal<string>("");
+
+  protected isButtonDisabled = computed<boolean>(() =>
+    this.inputValue().length === 0 ||
+    [...this.inputValue()].some(chr => !".-/ ".includes(chr)));
+
+  constructor() {
+    effect(() => {
+      console.log(this.isButtonDisabled());
+    });
+  }
 
   onSubmit() {
     const decoded = this.morseService.decode(this.inputValue())

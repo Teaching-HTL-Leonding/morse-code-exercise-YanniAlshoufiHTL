@@ -44,7 +44,7 @@ export class MorseService {
     const encodedStrParts = [...rawStr]
       .map(chr => {
         if (chr === " ") {
-          return " / ";
+          return "/";
         }
 
         const idx = chr.charCodeAt(0) - 'A'.charCodeAt(0);

@@ -1,4 +1,4 @@
-import { Component, inject, Inject, signal } from '@angular/core';
+import { Component, computed, inject, Inject, signal } from '@angular/core';
 import { MorseService } from "../morse.service";
 import { FormsModule } from "@angular/forms";
 
@@ -18,6 +18,9 @@ export class EncodePageComponent {
   protected output = signal<string>("");
   protected errorMessage = signal<string>("");
 
+  protected isButtonDisabled = computed<boolean>(() =>
+    this.inputValue().length === 0 ||
+    [...this.inputValue()].some(chr => !"ABCDEFGHIJKLMNOPQRSTUVWXYZ ".includes(chr)));
 
   onSubmit() {
     const encoded = this.morseService.encode(this.inputValue())

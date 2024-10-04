@@ -3,8 +3,8 @@
     <h1>Enter string to encode.</h1>
     <input type="text" name="str" [(ngModel)]="inputValue">
   </label>
-  <button>OK</button>
+  <button [disabled]="isButtonDisabled()">OK</button>
 </form>
 
-<p>{{output()}}</p>
-<p class="error-message">{{errorMessage()}}</p>
+<input readonly [value]="output()">
+<p class="error-message">{{ errorMessage() }}</p>
