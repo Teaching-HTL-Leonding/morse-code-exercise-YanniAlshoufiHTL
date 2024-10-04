@@ -6,5 +6,5 @@
   <button [disabled]="isButtonDisabled()">OK</button>
 </form>
 
-<input readonly [value]="output()">
-<p class="error-message">{{ errorMessage() }}</p>
+<input readonly [value]="output()" [hidden]="errorMessage().length !== 0">
+<input class="error-message" value="{{ errorMessage() }}" [hidden]="errorMessage().length === 0">
