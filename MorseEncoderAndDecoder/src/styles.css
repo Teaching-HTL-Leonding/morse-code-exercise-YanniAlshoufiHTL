@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 100%;
+  font-family: system-ui, sans-serif;
+}
+
+.error-message {
+  color: red;
+}
+
+input {
+  width: 100%;
+  font-size: 110%;
+  padding: 2px;
+}
+
+button {
+  background: #000;
+  color: lightgray;
+  border: 1px solid black;
+  padding: .5rem 1rem;
+  font-size: 100%;
+  border-radius: 1rem;
+
+  &:disabled {
+    background: gray;
+  }
+}
+
+main,
+main form,
+main form label {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
