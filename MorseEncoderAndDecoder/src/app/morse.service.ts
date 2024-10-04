@@ -66,21 +66,31 @@ export class MorseService {
   public decode(encodedStr: string): string | Error {
     const encodedWords = encodedStr.split(" / ");
 
-    return encodedWords
+    const parts = encodedWords
       .map(encodedWord => {
         const encodedChars = encodedWord.split(' ');
-        return encodedChars
+        const innerParts = encodedChars
           .map(encodedChar => {
             const idx = MorseService.MorseCode.findIndex(code => code === encodedChar);
 
             if (idx < 0 || idx > MorseService.MorseCode.length) {
-              return '!';
+              return new Error("Please provide a valid morse code string to decode!");
             }
 
-            return MorseService.MorseCode[idx]
+            return String.fromCharCode(idx + 'A'.charCodeAt(0))
           })
-          .join("");
+
+        if (innerParts.some(part => part instanceof Error)) {
+          return innerParts.filter(part => part instanceof Error)[0];
+        }
+
+        return innerParts.join("");
       })
-      .join(" ")
+
+    if (parts.some(part => part instanceof Error)) {
+      return parts.filter(part => part instanceof Error)[0];
+    }
+
+    return parts.join(" ");
   }
 }
